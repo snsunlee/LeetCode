@@ -6,17 +6,17 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates.sort()
-        n = len(candidates)
         res = []
-        def backtrack(i,tmp_sum,tmp):
-            if tmp_sum>target or i==n:
+        def backtrack(candidates,target,tmp_list):
+            if target==0:
+                res.append(tmp_list)
+                return
+            if target <0:
                 return 
-            if tmp_sum==target:
-                res.append(tmp)
-                return 
-            for j in range(i,n):
-                if tmp_sum+candidates[j]>target:break
-                backtrack(j,tmp_sum+candidates[j],tmp+[candidates[j]])
-        backtrack(0,0,[])
+            for i in range(len(candidates)):
+                if candidates[i]>target:
+                    break
+                backtrack(candidates[i:],target-candidates[i],tmp_list+[candidates[i]])
+        backtrack(candidates,target,[])
         return res
 

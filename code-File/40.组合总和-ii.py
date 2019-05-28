@@ -9,15 +9,14 @@ class Solution:
             return []
         res=[]
         candidates.sort()
-        n=len(candidates)
-        def backtrack(i,tmp_sum,tmp_list):
+        def backtrack(candidates,tmp_sum,tmp_list):
             if tmp_sum==target:
                 res.append(tmp_list)
-                return
-            for j in range(i,n):
+                return 
+            for j in range(len(candidates)):
                 if tmp_sum + candidates[j] >target:break
-                if j>i  and candidates[j]==candidates[j-1]:continue
-                backtrack(j+1,tmp_sum+candidates[j],tmp_list+[candidates[j]])
-        backtrack(0,0,[])
+                if j>0  and candidates[j]==candidates[j-1]:continue
+                backtrack(candidates[j+1:],tmp_sum+candidates[j],tmp_list+[candidates[j]]) 
+        backtrack(candidates,0,[])
         return res
 
