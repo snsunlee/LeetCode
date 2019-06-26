@@ -1,0 +1,23 @@
+#
+# @lc app=leetcode.cn id=74 lang=python3
+#
+# [74] 搜索二维矩阵
+#
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        ###二维矩阵转换成一维矩阵用二分查找
+        ###一维矩阵中的index ==[index//col][index%col]
+        if not matrix:return False
+        row=len(matrix)
+        col=len(matrix[0])
+        left=0
+        right=row*col
+        while left <right:
+            mid=left+(right-left)//2
+            if matrix[mid//col][mid%col]==target:
+                return True
+            elif matrix[mid//col][mid%col]<target:
+                left=mid+1
+            else:
+                right=mid
+
