@@ -53,6 +53,7 @@
 # 
 # 
 #
+###使用了双指针的解法
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if len(nums)==0 or len(nums)==1:
