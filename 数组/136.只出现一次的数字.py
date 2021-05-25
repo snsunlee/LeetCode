@@ -14,4 +14,14 @@ class Solution:
                 return nums[0]
         
         return nums[0]
+    # 解法2 使用异或
+    def singleNumber(self, nums: List[int]) -> int:
+        a = 0 
+        for num in nums:
+            a = a ^ num
+        return a
+
+    # 解法3 集合数学运算
+    def singleNumber(self, nums: List[int]) -> int:
+        return 2*sum(set(nums)) -sum(nums) 
 
